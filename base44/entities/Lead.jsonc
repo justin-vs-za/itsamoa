@@ -1,0 +1,68 @@
+{
+  "name": "Lead",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Name",
+      "description": "Full name of the enquirer"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "title": "Email"
+    },
+    "company": {
+      "type": "string",
+      "title": "Company",
+      "description": "Organisation name"
+    },
+    "current_setup": {
+      "type": "string",
+      "enum": [
+        "On-premise servers",
+        "Migrating to Cloud",
+        "Fully Cloud-based",
+        "Hybrid",
+        "Not sure / Need assessment"
+      ],
+      "title": "Current Setup",
+      "description": "Pre-qualification: the enquirer's current infrastructure state"
+    },
+    "service_interest": {
+      "type": "string",
+      "enum": [
+        "Cloud Migration & Architecture",
+        "Cyber Resilience",
+        "Physical-to-Virtual Infrastructure",
+        "Networking & Connectivity",
+        "Microsoft 365 & Productivity",
+        "Security Audit & Compliance",
+        "General Enquiry"
+      ],
+      "title": "Service Interest"
+    },
+    "message": {
+      "type": "string",
+      "title": "Message",
+      "description": "Details of the request"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "contacted",
+        "won",
+        "lost"
+      ],
+      "default": "new",
+      "title": "Status"
+    }
+  },
+  "required": [
+    "name",
+    "email",
+    "current_setup",
+    "service_interest"
+  ]
+}
