@@ -1,0 +1,62 @@
+headersOrigin = "config"
+redirectsOrigin = "config"
+plugins = []
+
+[functions]
+
+[functions."*"]
+
+[build]
+publish = "/home/ubuntu/itsamoa-src/dist"
+publishOrigin = "config"
+commandOrigin = "config"
+command = "npm ci && npm run build"
+
+[build.environment]
+NODE_VERSION = "22"
+VITE_BASE44_APP_ID = "6aa613ccd990b946b850fb36"
+VITE_BASE44_APP_BASE_URL = "https://itsamoa.base44.app"
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
+
+[[headers]]
+for = "/*"
+
+[headers.values]
+X-Frame-Options = "DENY"
+X-Content-Type-Options = "nosniff"
+Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[redirects]]
+from = "/api/*"
+to = "https://itsamoa.base44.app/api/:splat"
+status = 200.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
