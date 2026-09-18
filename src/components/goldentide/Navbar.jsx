@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
-  { label: "Infrastructure", href: "#services", group: "Core Infrastructure" },
-  { label: "Cloud & Azure", href: "#services", group: "Cloud Services" },
-  { label: "Cybersecurity", href: "#security", group: "Security" },
-  { label: "Legacy", href: "#legacy", group: "Core Infrastructure" },
-  { label: "Contact", href: "#contact", group: "Cloud Services" },
+  { label: "Infrastructure", href: "/#services", group: "Core Infrastructure" },
+  { label: "Cloud & Azure", href: "/#services", group: "Cloud Services" },
+  { label: "Cybersecurity", href: "/#security", group: "Security" },
+  { label: "Legacy", href: "/#legacy", group: "Core Infrastructure" },
+  { label: "Downloads", href: "/downloads", group: "Cloud Services", route: true },
+  { label: "Contact", href: "/#contact", group: "Cloud Services" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -24,6 +27,10 @@ export default function Navbar() {
     document.body.style.overflow = open ? "hidden" : "";
   }, [open]);
 
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
+
   return (
     <>
       <header
@@ -32,7 +39,7 @@ export default function Navbar() {
         }`}
       >
         <nav className="mx-auto max-w-7xl px-6 flex items-center justify-between">
-          <a href="#top" className="flex items-center gap-3 group">
+          <Link to="/" className="flex items-center gap-3 group">
             <span className="relative flex h-9 w-9 items-center justify-center">
               <span className="absolute inset-0 rounded-full border border-gold/40" />
               <span className="absolute inset-1 rounded-full border border-gold/60 pulse-line" />
@@ -44,21 +51,40 @@ export default function Navbar() {
                 IT Professional Services
               </span>
             </span>
-          </a>
+          </Link>
 
           <div className="hidden md:flex items-center gap-8">
-            {NAV_LINKS.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors relative group"
-              >
-                {l.label}
-                <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
-              </a>
-            ))}
+            {NAV_LINKS.map((l) =>
+              l.route ? (
+                <Link
+                  key={l.label}
+                  to={l.href}
+                  className={`text-sm transition-colors relative group ${
+                    location.pathname === l.href
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {l.label}
+                  <span
+                    className={`absolute -bottom-1 left-0 h-px bg-gold transition-all duration-300 ${
+                      location.pathname === l.href ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                  />
+                </Link>
+              ) : (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors relative group"
+                >
+                  {l.label}
+                  <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
+                </a>
+              )
+            )}
             <a
-              href="#contact"
+              href="/#contact"
               className="text-sm font-medium px-5 py-2.5 bg-basalt text-clarity rounded-sm hover:bg-gold hover:text-basalt transition-colors"
             >
               Request Audit
@@ -102,16 +128,27 @@ export default function Navbar() {
                   0{gi + 1} / {group}
                 </span>
                 <div className="space-y-1">
-                  {NAV_LINKS.filter((l) => l.group === group).map((l, i) => (
-                    <a
-                      key={l.label + i}
-                      href={l.href}
-                      onClick={() => setOpen(false)}
-                      className="block font-display text-3xl md:text-4xl text-clarity/80 hover:text-gold transition-colors py-2"
-                    >
-                      {l.label}
-                    </a>
-                  ))}
+                  {NAV_LINKS.filter((l) => l.group === group).map((l, i) =>
+                    l.route ? (
+                      <Link
+                        key={l.label + i}
+                        to={l.href}
+                        onClick={() => setOpen(false)}
+                        className="block font-display text-3xl md:text-4xl text-clarity/80 hover:text-gold transition-colors py-2"
+                      >
+                        {l.label}
+                      </Link>
+                    ) : (
+                      <a
+                        key={l.label + i}
+                        href={l.href}
+                        onClick={() => setOpen(false)}
+                        className="block font-display text-3xl md:text-4xl text-clarity/80 hover:text-gold transition-colors py-2"
+                      >
+                        {l.label}
+                      </a>
+                    )
+                  )}
                 </div>
               </div>
             ))}

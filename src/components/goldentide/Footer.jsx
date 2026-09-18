@@ -72,7 +72,7 @@ export default function Footer() {
                 {col.links.map((l) => (
                   <li key={l}>
                     <a
-                      href="#services"
+                      href="/#services"
                       className="text-sm text-clarity/60 hover:text-gold transition-colors"
                     >
                       {l}
@@ -89,17 +89,22 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               <li>
-                <a href="#contact" className="text-sm text-clarity/60 hover:text-gold transition-colors">
+                <a href="/#contact" className="text-sm text-clarity/60 hover:text-gold transition-colors">
                   Request Audit
                 </a>
               </li>
               <li>
-                <a href="#legacy" className="text-sm text-clarity/60 hover:text-gold transition-colors">
+                <a href="/downloads" className="text-sm text-clarity/60 hover:text-gold transition-colors">
+                  Downloads
+                </a>
+              </li>
+              <li>
+                <a href="/#legacy" className="text-sm text-clarity/60 hover:text-gold transition-colors">
                   Our Legacy
                 </a>
               </li>
               <li>
-                <a href="#security" className="text-sm text-clarity/60 hover:text-gold transition-colors">
+                <a href="/#security" className="text-sm text-clarity/60 hover:text-gold transition-colors">
                   Security
                 </a>
               </li>
