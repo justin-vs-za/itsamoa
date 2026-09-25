@@ -1,9 +1,5 @@
 import { readFileSync, existsSync } from "node:fs";
 import { join, basename } from "node:path";
-import { fileURLToPath } from "node:url";
-import { dirname } from "node:path";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const APP_ID = process.env.VITE_BASE44_APP_ID || "6aa613ccd990b946b850fb36";
 const BASE44_API = process.env.BASE44_API_BASE || "https://itsamoa.base44.app";
@@ -44,6 +40,17 @@ function corsHeaders(origin) {
   };
 }
 
+function resolveSecureFile(fileKey) {
+  const cwd = process.cwd();
+  const candidates = [
+    join(cwd, "secure-downloads", fileKey),
+    join(cwd, "netlify", "functions", "secure-downloads", fileKey),
+    join("/var/task", "secure-downloads", fileKey),
+    join("/var/task", "netlify", "functions", "secure-downloads", fileKey),
+  ];
+  return candidates.find((p) => existsSync(p)) || null;
+}
+
 async function verifyBase44User(token) {
   const url = `${BASE44_API}/api/apps/${APP_ID}/entities/User/me`;
   const res = await fetch(url, {
@@ -58,7 +65,7 @@ async function verifyBase44User(token) {
 }
 
 export async function handler(event) {
-  const origin = event.headers.origin || event.headers.Origin || "";
+  const origin = event.headers?.origin || event.headers?.Origin || "";
   const headers = corsHeaders(origin);
 
   if (event.httpMethod === "OPTIONS") {
@@ -69,8 +76,8 @@ export async function handler(event) {
     return { statusCode: 405, headers, body: "Method not allowed" };
   }
 
-  const authHeader = event.headers.authorization || event.headers.Authorization || "";
-  const token = authHeader.replace(/^Bearer\s+/i, "").trim();
+  const authHeader = event.headers?.authorization || event.headers?.Authorization || "";
+  const token = String(authHeader).replace(/^Bearer\s+/i, "").trim();
   if (!token) {
     return {
       statusCode: 401,
@@ -109,15 +116,9 @@ export async function handler(event) {
     };
   }
 
-  // Bundled next to the function via netlify.toml included_files
-  const candidates = [
-    join(__dirname, "..", "..", "secure-downloads", fileKey),
-    join(process.cwd(), "secure-downloads", fileKey),
-    join(__dirname, "secure-downloads", fileKey),
-  ];
-  const filePath = candidates.find((p) => existsSync(p));
+  const filePath = resolveSecureFile(fileKey);
   if (!filePath) {
-    console.error("missing file", fileKey, candidates);
+    console.error("missing file", fileKey, "cwd=", process.cwd());
     return {
       statusCode: 500,
       headers: { ...headers, "Content-Type": "application/json" },
