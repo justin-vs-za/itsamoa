@@ -1,7 +1,12 @@
 import { useState } from "react";
-import { Send, CheckCircle2, MapPin, Mail, Phone } from "lucide-react";
+import { Send, CheckCircle2, MapPin, Mail, Phone, Linkedin, Facebook } from "lucide-react";
 import { base44 } from "@/api/base44Client";
 import { useInView } from "@/hooks/useInView";
+
+const SOCIAL = {
+  linkedin: "https://www.linkedin.com/in/justin-van-staden-70312723/",
+  facebook: "https://www.facebook.com/profile.php?id=61594527431413",
+};
 
 const SETUPS = [
   "On-premise servers",
@@ -98,6 +103,38 @@ export default function Contact() {
                     <a href="tel:+6857703733" className="hover:text-gold transition-colors">+685 770 3733</a>
                   </div>
                   <div className="text-sm text-muted-foreground">Remote & on-site engagements</div>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <Linkedin className="h-5 w-5 text-gold mt-0.5 shrink-0" />
+                <div>
+                  <div className="font-medium text-basalt">
+                    <a
+                      href={SOCIAL.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-gold transition-colors"
+                    >
+                      LinkedIn — Justin Van Staden
+                    </a>
+                  </div>
+                  <div className="text-sm text-muted-foreground">Personal professional profile</div>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <Facebook className="h-5 w-5 text-gold mt-0.5 shrink-0" />
+                <div>
+                  <div className="font-medium text-basalt">
+                    <a
+                      href={SOCIAL.facebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-gold transition-colors"
+                    >
+                      Facebook — Golden Tide
+                    </a>
+                  </div>
+                  <div className="text-sm text-muted-foreground">Company Page</div>
                 </div>
               </div>
             </div>

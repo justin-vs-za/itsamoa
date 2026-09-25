@@ -96,6 +96,26 @@ export default function Footer() {
                 </a>
               </li>
               <li>
+                <a
+                  href="https://www.linkedin.com/in/justin-van-staden-70312723/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-clarity/60 hover:text-gold transition-colors"
+                >
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61594527431413"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-clarity/60 hover:text-gold transition-colors"
+                >
+                  Facebook
+                </a>
+              </li>
+              <li>
                 <a href="/#legacy" className="text-sm text-clarity/60 hover:text-gold transition-colors">
                   Our Legacy
                 </a>
