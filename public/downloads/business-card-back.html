@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Golden Tide — Business Card Back</title>
+  <style>
+    @page { size: 90mm 50mm; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 90mm;
+      height: 50mm;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      background: #fff;
+    }
+    .card {
+      width: 90mm;
+      height: 50mm;
+      padding: 5mm 5.5mm;
+      background: #142028;
+      color: #eef5f7;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(50mm 35mm at 100% 0%, rgba(184, 134, 11, 0.25), transparent 60%),
+        radial-gradient(45mm 30mm at 0% 100%, rgba(26, 107, 122, 0.35), transparent 55%);
+    }
+    .card > * { position: relative; z-index: 1; }
+    .top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 3mm;
+    }
+    .brand-logo {
+      width: 8mm;
+      height: 8mm;
+      border-radius: 1.4mm;
+      object-fit: cover;
+      display: block;
+      box-shadow: 0 0 0 0.3mm rgba(232, 196, 90, 0.45);
+      flex-shrink: 0;
+    }
+    .tag {
+      font-size: 6pt;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #e8c45a;
+      font-weight: 700;
+    }
+    .headline {
+      align-self: center;
+      font-size: 11pt;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+      max-width: 72mm;
+    }
+    .headline span { color: #e8c45a; }
+    .list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1mm 4mm;
+      font-size: 6.5pt;
+      color: rgba(238, 245, 247, 0.82);
+      line-height: 1.35;
+      border-top: 0.35mm solid rgba(238, 245, 247, 0.2);
+      padding-top: 2mm;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="top-row">
+      <div class="tag">Samoa · New Zealand · Australia</div>
+      <img class="brand-logo" src="Golden-Tide-Logo-Official.png" width="64" height="64" alt="Golden Tide" />
+    </div>
+    <div class="headline">
+      Cloud · Cyber · Infrastructure<br />
+      <span>for small &amp; medium business.</span>
+    </div>
+    <div class="list">
+      <div>Azure &amp; Microsoft 365</div>
+      <div>Security audits</div>
+      <div>Hyper-V / servers</div>
+      <div>Networking &amp; VPN</div>
+      <div>Backup &amp; recovery</div>
+      <div>itsamoa.goldentide.cloud</div>
+    </div>
+  </div>
+</body>
+</html>

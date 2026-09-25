@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Golden Tide — Quote Template</title>
+  <style>
+    @page { size: A4; margin: 10mm; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      color: #142028;
+      background: #fff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      width: 210mm;
+    }
+    .sheet { width: 190mm; margin: 0 auto; }
+    .header {
+      background: #142028;
+      color: #eef5f7;
+      padding: 6mm 7mm 5mm;
+      margin-bottom: 5mm;
+      display: flex;
+      align-items: center;
+      gap: 4.5mm;
+    }
+    .header-logo {
+      width: 14mm;
+      height: 14mm;
+      border-radius: 2.5mm;
+      object-fit: cover;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 0.35mm rgba(232, 196, 90, 0.4);
+    }
+    .header h1 { font-size: 18pt; letter-spacing: -0.02em; line-height: 1.1; }
+    .header .sub {
+      margin-top: 1.5mm;
+      font-size: 7.5pt;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #e8c45a;
+      font-weight: 700;
+    }
+    .header .geo { margin-top: 1.5mm; font-size: 8.5pt; color: rgba(238,245,247,0.7); }
+    .title-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 6mm;
+      margin-bottom: 5mm;
+      align-items: flex-start;
+    }
+    .title-row h2 { font-size: 20pt; letter-spacing: -0.03em; }
+    .meta { font-size: 9pt; line-height: 1.45; text-align: right; min-width: 52mm; }
+    .meta strong { color: #1a6b7a; font-weight: 700; }
+    .parties {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6mm;
+      margin-bottom: 5mm;
+    }
+    .parties h3 {
+      font-size: 8pt;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #1a6b7a;
+      margin-bottom: 2mm;
+    }
+    .parties .name { font-size: 10.5pt; font-weight: 700; margin-bottom: 1mm; }
+    .parties p { font-size: 9pt; color: #4a5d68; line-height: 1.35; }
+    .prepared {
+      background: #f4f8fa;
+      border: 1px solid #d5dee3;
+      padding: 3.5mm;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 4mm;
+      font-size: 9pt;
+    }
+    thead th {
+      background: #142028;
+      color: #fff;
+      text-align: left;
+      padding: 2mm 2mm;
+      font-size: 8pt;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    thead th.num, td.num { text-align: center; width: 8mm; }
+    thead th.money, td.money { text-align: right; white-space: nowrap; }
+    tbody td {
+      border-bottom: 1px solid #d5dee3;
+      padding: 2.2mm 2mm;
+      vertical-align: top;
+    }
+    tr.empty td { background: #fafbfc; height: 6mm; }
+    .totals { display: flex; justify-content: flex-end; margin-bottom: 5mm; }
+    .totals table { width: 68mm; margin: 0; }
+    .totals td { border: none; padding: 1.2mm 2mm; }
+    .totals .label {
+      color: #1a6b7a;
+      font-weight: 700;
+      font-size: 8.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .totals .grand td {
+      background: #e8c45a;
+      font-weight: 800;
+      font-size: 11pt;
+      padding: 2.5mm 2mm;
+    }
+    .terms {
+      border-top: 2px solid #1a6b7a;
+      padding-top: 4mm;
+      margin-bottom: 3mm;
+    }
+    .terms h3 {
+      font-size: 8.5pt;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #1a6b7a;
+      margin-bottom: 2.5mm;
+    }
+    .terms ul {
+      list-style: none;
+      font-size: 8.5pt;
+      color: #4a5d68;
+      line-height: 1.4;
+      display: grid;
+      gap: 1mm;
+      background: #f4f8fa;
+      border: 1px solid #d5dee3;
+      padding: 3.5mm;
+    }
+    .terms li::before { content: "▸ "; color: #b8860b; }
+    .accept {
+      margin-top: 4mm;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 4mm;
+      font-size: 9pt;
+    }
+    .accept h3 {
+      grid-column: 1 / -1;
+      font-size: 8pt;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #1a6b7a;
+      margin-bottom: 1mm;
+    }
+    .accept .field {
+      border-bottom: 1px solid #142028;
+      padding-bottom: 1mm;
+      color: #4a5d68;
+      min-height: 6mm;
+    }
+    .notes {
+      margin-top: 4mm;
+      font-size: 8.5pt;
+      color: #4a5d68;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="header">
+      <img class="header-logo" src="Golden-Tide-Logo-Official.png" width="110" height="110" alt="Golden Tide" />
+      <div>
+        <h1>Golden Tide</h1>
+        <div class="sub">IT Professional Services</div>
+        <div class="geo">Samoa · New Zealand · Australia</div>
+      </div>
+    </div>
+
+    <div class="title-row">
+      <h2>Quote</h2>
+      <div class="meta">
+        <div><strong>Quote No.</strong> &nbsp; GT-Q-2026-0001</div>
+        <div><strong>Date</strong> &nbsp; 25 Sep 2026</div>
+        <div><strong>Valid until</strong> &nbsp; 25 Oct 2026</div>
+        <div><strong>Currency</strong> &nbsp; WST</div>
+      </div>
+    </div>
+
+    <div class="parties">
+      <div>
+        <h3>From</h3>
+        <div class="name">Golden Tide IT Professional Services</div>
+        <p>Justin Van Staden · IT Director · Founder<br />
+        Faleasiu / Apia, Samoa<br />
+        +685 770 3733 · justin@goldentide.cloud<br />
+        itsamoa.goldentide.cloud</p>
+      </div>
+      <div class="prepared">
+        <h3>Prepared for</h3>
+        <div class="name">[Client / Company Name]</div>
+        <p>[Contact person]<br />
+        [Address / City / Country]<br />
+        [Email] · [Phone]<br />
+        Project / Reference: [optional]</p>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th class="num">#</th>
+          <th>Description of services</th>
+          <th class="num">Qty</th>
+          <th class="num">Unit</th>
+          <th class="money">Rate</th>
+          <th class="money">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td class="num">1</td>
+          <td>Cloud migration assessment & Azure design</td>
+          <td class="num">1</td>
+          <td class="num">ea</td>
+          <td class="money">1,500.00</td>
+          <td class="money">1,500.00</td>
+        </tr>
+        <tr>
+          <td class="num">2</td>
+          <td>Microsoft 365 tenant setup & identity</td>
+          <td class="num">1</td>
+          <td class="num">ea</td>
+          <td class="money">850.00</td>
+          <td class="money">850.00</td>
+        </tr>
+        <tr>
+          <td class="num">3</td>
+          <td>On-site networking & VPN configuration (hrs)</td>
+          <td class="num">8</td>
+          <td class="num">hr</td>
+          <td class="money">125.00</td>
+          <td class="money">1,000.00</td>
+        </tr>
+        <tr class="empty">
+          <td class="num">4</td>
+          <td></td><td></td><td></td><td></td><td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="totals">
+      <table>
+        <tr>
+          <td class="label">Subtotal</td>
+          <td class="money">WST 3,350.00</td>
+        </tr>
+        <tr>
+          <td class="label">Tax / VAGST</td>
+          <td class="money">WST 0.00</td>
+        </tr>
+        <tr class="grand">
+          <td>Quote total</td>
+          <td class="money">WST 3,350.00</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="terms">
+      <h3>Terms &amp; acceptance</h3>
+      <ul>
+        <li>This quote is valid for 30 days from the quote date unless otherwise stated.</li>
+        <li>Prices exclude tax unless Tax / VAGST is shown. Scope changes may adjust the total.</li>
+        <li>To accept: reply confirming the quote number, or sign below. An invoice will follow on acceptance.</li>
+        <li>Payment: as stated on the subsequent invoice. Bank: BSP Samoa · Apia · Account 2001176615.</li>
+      </ul>
+      <div class="accept">
+        <h3>Client acceptance</h3>
+        <div class="field">Name</div>
+        <div class="field">Signature</div>
+        <div class="field">Date</div>
+      </div>
+    </div>
+
+    <div class="notes">
+      Questions about this quote: +685 770 3733 · justin@goldentide.cloud · itsamoa.goldentide.cloud
+    </div>
+  </div>
+</body>
+</html>

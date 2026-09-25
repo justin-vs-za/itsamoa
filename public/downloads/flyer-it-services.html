@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Golden Tide — IT Services Flyer</title>
+  <style>
+    @page { size: A4; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 210mm; height: 297mm; }
+    body {
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      color: #142028;
+      background: #fff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .sheet {
+      width: 210mm;
+      height: 297mm;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      background:
+        radial-gradient(900px 420px at 100% -5%, rgba(184, 134, 11, 0.16), transparent 55%),
+        radial-gradient(700px 380px at 0% 100%, rgba(26, 107, 122, 0.12), transparent 50%),
+        linear-gradient(180deg, #f4f8fa 0%, #ffffff 38%, #eef5f7 100%);
+      overflow: hidden;
+      position: relative;
+    }
+    .top {
+      padding: 14mm 14mm 8mm;
+      border-bottom: 3px solid #1a6b7a;
+    }
+    .brand-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12mm;
+    }
+    .brand {
+      display: flex;
+      gap: 4mm;
+      align-items: center;
+    }
+    .brand-logo {
+      width: 14mm;
+      height: 14mm;
+      border-radius: 2.5mm;
+      object-fit: cover;
+      display: block;
+      box-shadow: 0 0 0 0.4mm rgba(184, 134, 11, 0.35);
+    }
+    .brand h1 {
+      font-size: 18pt;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .brand p {
+      font-size: 8pt;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #b8860b;
+      font-weight: 600;
+      margin-top: 1mm;
+    }
+    .geo {
+      text-align: right;
+      font-size: 9pt;
+      color: #4a5d68;
+      line-height: 1.4;
+    }
+    .geo strong { color: #1a6b7a; display: block; font-size: 10pt; }
+    .hero {
+      margin-top: 7mm;
+      max-width: 160mm;
+    }
+    .hero h2 {
+      font-size: 26pt;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      color: #142028;
+    }
+    .hero h2 em {
+      font-style: normal;
+      color: #1a6b7a;
+    }
+    .hero .lede {
+      margin-top: 4mm;
+      font-size: 11.5pt;
+      color: #4a5d68;
+      max-width: 145mm;
+      line-height: 1.45;
+    }
+    .smb {
+      display: inline-block;
+      margin-top: 5mm;
+      padding: 2.2mm 4mm;
+      background: #142028;
+      color: #f7fafb;
+      font-size: 9pt;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .body {
+      padding: 9mm 14mm;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 8mm;
+    }
+    h3 {
+      font-size: 10pt;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #1a6b7a;
+      margin-bottom: 4mm;
+    }
+    .services {
+      display: grid;
+      gap: 3.5mm;
+    }
+    .svc {
+      border-left: 3px solid #b8860b;
+      padding: 3mm 0 3mm 4mm;
+      background: rgba(255,255,255,0.72);
+    }
+    .svc strong {
+      display: block;
+      font-size: 11pt;
+      margin-bottom: 1mm;
+    }
+    .svc span {
+      font-size: 9.5pt;
+      color: #4a5d68;
+      line-height: 1.35;
+    }
+    .side {
+      display: grid;
+      gap: 5mm;
+      align-content: start;
+    }
+    .panel {
+      background: #142028;
+      color: #eef5f7;
+      padding: 6mm;
+    }
+    .panel h3 { color: #e8c45a; }
+    .panel ul {
+      list-style: none;
+      display: grid;
+      gap: 2.5mm;
+      font-size: 10pt;
+      line-height: 1.35;
+    }
+    .panel li::before {
+      content: "▸ ";
+      color: #e8c45a;
+    }
+    .callout {
+      border: 1.5px solid #1a6b7a;
+      padding: 5mm;
+      background: rgba(26, 107, 122, 0.06);
+    }
+    .callout p {
+      font-size: 10.5pt;
+      line-height: 1.4;
+      color: #142028;
+    }
+    .callout strong { color: #1a6b7a; }
+    .years {
+      font-size: 28pt;
+      font-weight: 800;
+      color: #b8860b;
+      line-height: 1;
+    }
+    .years span {
+      display: block;
+      font-size: 9pt;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #4a5d68;
+      font-weight: 600;
+      margin-top: 1.5mm;
+    }
+    .footer {
+      padding: 6mm 14mm 8mm;
+      border-top: 2px solid #d5dee3;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 6mm;
+      align-items: end;
+      background: rgba(255,255,255,0.85);
+    }
+    .cta {
+      font-size: 13pt;
+      font-weight: 700;
+      color: #142028;
+    }
+    .cta em {
+      font-style: normal;
+      color: #1a6b7a;
+    }
+    .contact {
+      text-align: right;
+      font-size: 9.5pt;
+      color: #4a5d68;
+      line-height: 1.45;
+    }
+    .contact strong { color: #142028; }
+    .contact a { color: #1a6b7a; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="top">
+      <div class="brand-row">
+        <div class="brand">
+          <img class="brand-logo" src="Golden-Tide-Logo-Official.png" width="106" height="106" alt="Golden Tide" />
+          <div>
+            <h1>Golden Tide</h1>
+            <p>IT Professional Services</p>
+          </div>
+        </div>
+        <div class="geo">
+          <strong>Samoa · New Zealand · Australia</strong>
+          Quiet systems. Clear signal.
+        </div>
+      </div>
+      <div class="hero">
+        <h2>Enterprise-grade IT for <em>small &amp; medium businesses</em>.</h2>
+        <p class="lede">
+          Cloud, cybersecurity, Microsoft platforms, and infrastructure — delivered with
+          28 years of hands-on engineering. From a single office network to a full company
+          migration, SMB work is welcome and done properly.
+        </p>
+        <div class="smb">SMALL TO MEDIUM BUSINESSES WELCOME</div>
+      </div>
+    </div>
+
+    <div class="body">
+      <div>
+        <h3>What we deliver</h3>
+        <div class="services">
+          <div class="svc">
+            <strong>Cloud Migration &amp; Azure</strong>
+            <span>Lift-and-shift or greenfield Azure design, Office 365 tenants, identity, and hybrid readiness.</span>
+          </div>
+          <div class="svc">
+            <strong>Cyber Resilience</strong>
+            <span>Zero-trust posture, endpoint protection, monitoring, backup, and recovery plans that hold up when connectivity is hard.</span>
+          </div>
+          <div class="svc">
+            <strong>Servers &amp; Hyper-V</strong>
+            <span>Physical-to-virtual builds, clustering, and infrastructure that gets the most from what you already own.</span>
+          </div>
+          <div class="svc">
+            <strong>Networking &amp; Microsoft 365</strong>
+            <span>Secure LAN/WAN design, VPN/SD-WAN, Exchange, Teams, SharePoint, and Intune — set up so people actually use it.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="side">
+        <div class="years">28<span>Years of mastery</span></div>
+        <div class="panel">
+          <h3>Ideal for SMBs that need</h3>
+          <ul>
+            <li>A trusted IT partner, not a ticket mill</li>
+            <li>Clear next steps after every conversation</li>
+            <li>Secure systems without enterprise bloat</li>
+            <li>On-site or remote work across the Pacific</li>
+            <li>Home offices to multi-site operations</li>
+          </ul>
+        </div>
+        <div class="callout">
+          <p><strong>Not sure where you stand?</strong> Request a security audit — we’ll map your risks and return a practical remediation plan.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>
+        <div class="cta">Let’s scope your system. <em>Request a consult.</em></div>
+        <div style="margin-top:2mm;font-size:9pt;color:#4a5d68;">Justin Van Staden · IT Director · Founder</div>
+      </div>
+      <div class="contact">
+        <strong>+685 770 3733</strong><br />
+        <a href="mailto:justin@goldentide.cloud">justin@goldentide.cloud</a><br />
+        <a href="https://itsamoa.goldentide.cloud">itsamoa.goldentide.cloud</a><br />
+        Faleasiu / Apia, Samoa
+      </div>
+    </div>
+  </div>
+</body>
+</html>

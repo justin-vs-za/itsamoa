@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Golden Tide — Invoice Template</title>
+  <style>
+    @page { size: A4; margin: 12mm; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      color: #142028;
+      background: #fff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      width: 210mm;
+      min-height: 297mm;
+    }
+    .sheet {
+      width: 186mm;
+      margin: 0 auto;
+      padding: 0;
+    }
+    .header {
+      background: #142028;
+      color: #eef5f7;
+      padding: 8mm 8mm 6mm;
+      margin: 0 -0mm 8mm;
+      display: flex;
+      align-items: center;
+      gap: 5mm;
+    }
+    .header-logo {
+      width: 16mm;
+      height: 16mm;
+      border-radius: 3mm;
+      object-fit: cover;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 0.4mm rgba(232, 196, 90, 0.4);
+    }
+    .header h1 {
+      font-size: 20pt;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .header .sub {
+      margin-top: 2mm;
+      font-size: 8pt;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #e8c45a;
+      font-weight: 700;
+    }
+    .header .geo {
+      margin-top: 2mm;
+      font-size: 9pt;
+      color: rgba(238,245,247,0.7);
+    }
+    .title-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8mm;
+      margin-bottom: 7mm;
+      align-items: flex-start;
+    }
+    .title-row h2 {
+      font-size: 22pt;
+      letter-spacing: -0.03em;
+    }
+    .meta {
+      font-size: 9.5pt;
+      line-height: 1.55;
+      text-align: right;
+      min-width: 55mm;
+    }
+    .meta strong { color: #1a6b7a; font-weight: 700; }
+    .parties {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8mm;
+      margin-bottom: 8mm;
+    }
+    .parties h3 {
+      font-size: 8.5pt;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #1a6b7a;
+      margin-bottom: 2.5mm;
+    }
+    .parties .name { font-size: 11pt; font-weight: 700; margin-bottom: 1mm; }
+    .parties p { font-size: 9.5pt; color: #4a5d68; line-height: 1.4; }
+    .billto {
+      background: #f4f8fa;
+      border: 1px solid #d5dee3;
+      padding: 4mm;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 6mm;
+      font-size: 9.5pt;
+    }
+    thead th {
+      background: #142028;
+      color: #fff;
+      text-align: left;
+      padding: 2.5mm 2mm;
+      font-size: 8.5pt;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    thead th.num, td.num { text-align: center; width: 8mm; }
+    thead th.money, td.money { text-align: right; white-space: nowrap; }
+    tbody td {
+      border-bottom: 1px solid #d5dee3;
+      padding: 2.8mm 2mm;
+      vertical-align: top;
+    }
+    tr.empty td { background: #fafbfc; height: 8mm; }
+    .totals {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 8mm;
+    }
+    .totals table { width: 70mm; margin: 0; }
+    .totals td { border: none; padding: 1.5mm 2mm; }
+    .totals .label { color: #1a6b7a; font-weight: 700; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.06em; }
+    .totals .grand td {
+      background: #e8c45a;
+      font-weight: 800;
+      font-size: 12pt;
+      padding: 3mm 2mm;
+    }
+    .pay {
+      border-top: 2px solid #1a6b7a;
+      padding-top: 5mm;
+      margin-bottom: 5mm;
+    }
+    .pay h3 {
+      font-size: 9pt;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #1a6b7a;
+      margin-bottom: 3mm;
+    }
+    .pay-grid {
+      display: grid;
+      grid-template-columns: 32mm 1fr;
+      gap: 1.5mm 3mm;
+      font-size: 10pt;
+      background: #f4f8fa;
+      padding: 4mm;
+      border: 1px solid #d5dee3;
+    }
+    .pay-grid .k { color: #1a6b7a; font-weight: 700; font-size: 9pt; }
+    .pay-grid .v.acct { font-weight: 800; letter-spacing: 0.02em; }
+    .notes {
+      font-size: 9pt;
+      color: #4a5d68;
+      line-height: 1.45;
+    }
+    .notes strong { color: #1a6b7a; display: block; margin-bottom: 1.5mm; letter-spacing: 0.12em; text-transform: uppercase; font-size: 8pt; }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="header">
+      <img class="header-logo" src="Golden-Tide-Logo-Official.png" width="120" height="120" alt="Golden Tide" />
+      <div>
+        <h1>Golden Tide</h1>
+        <div class="sub">IT Professional Services</div>
+        <div class="geo">Samoa · New Zealand · Australia</div>
+      </div>
+    </div>
+
+    <div class="title-row">
+      <h2>Invoice</h2>
+      <div class="meta">
+        <div><strong>Invoice No.</strong> &nbsp; GT-2026-0001</div>
+        <div><strong>Date</strong> &nbsp; 25 Sep 2026</div>
+        <div><strong>Due</strong> &nbsp; 9 Oct 2026</div>
+        <div><strong>Currency</strong> &nbsp; WST</div>
+      </div>
+    </div>
+
+    <div class="parties">
+      <div>
+        <h3>From</h3>
+        <div class="name">Golden Tide IT Professional Services</div>
+        <p>Justin Van Staden · IT Director · Founder<br />
+        Faleasiu / Apia, Samoa<br />
+        +685 770 3733 · justin@goldentide.cloud<br />
+        itsamoa.goldentide.cloud</p>
+      </div>
+      <div class="billto">
+        <h3>Bill To</h3>
+        <div class="name">[Client / Company Name]</div>
+        <p>[Contact person]<br />
+        [Address / City / Country]<br />
+        [Email] · [Phone]<br />
+        PO / Reference: [optional]</p>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th class="num">#</th>
+          <th>Description of services</th>
+          <th class="num">Qty</th>
+          <th class="num">Unit</th>
+          <th class="money">Rate</th>
+          <th class="money">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td class="num">1</td>
+          <td>Cloud migration assessment & Azure design</td>
+          <td class="num">1</td>
+          <td class="num">ea</td>
+          <td class="money">1,500.00</td>
+          <td class="money">1,500.00</td>
+        </tr>
+        <tr>
+          <td class="num">2</td>
+          <td>Microsoft 365 tenant setup & identity</td>
+          <td class="num">1</td>
+          <td class="num">ea</td>
+          <td class="money">850.00</td>
+          <td class="money">850.00</td>
+        </tr>
+        <tr>
+          <td class="num">3</td>
+          <td>On-site networking & VPN configuration (hrs)</td>
+          <td class="num">8</td>
+          <td class="num">hr</td>
+          <td class="money">125.00</td>
+          <td class="money">1,000.00</td>
+        </tr>
+        <tr class="empty">
+          <td class="num">4</td>
+          <td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr class="empty">
+          <td class="num">5</td>
+          <td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr class="empty">
+          <td class="num">6</td>
+          <td></td><td></td><td></td><td></td><td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="totals">
+      <table>
+        <tr>
+          <td class="label">Subtotal</td>
+          <td class="money">WST 3,350.00</td>
+        </tr>
+        <tr>
+          <td class="label">Tax / VAGST</td>
+          <td class="money">WST 0.00</td>
+        </tr>
+        <tr class="grand">
+          <td>Total due</td>
+          <td class="money">WST 3,350.00</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="pay">
+      <h3>Payment details</h3>
+      <div class="pay-grid">
+        <div class="k">Bank</div><div class="v">BSP Samoa (Bank of South Pacific)</div>
+        <div class="k">Branch</div><div class="v">Apia</div>
+        <div class="k">Account name</div><div class="v">Justin Van Staden / Golden Tide</div>
+        <div class="k">Account number</div><div class="v acct">2001176615</div>
+        <div class="k">Reference</div><div class="v">Please quote invoice number</div>
+      </div>
+    </div>
+
+    <div class="notes">
+      <strong>Notes</strong>
+      Payment due within 14 days of invoice date unless otherwise agreed.
+      Thank you for your business. Questions: +685 770 3733 · justin@goldentide.cloud
+    </div>
+  </div>
+</body>
+</html>
