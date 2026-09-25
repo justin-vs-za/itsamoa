@@ -136,38 +136,6 @@ const DOWNLOADS = [
       },
     ],
   },
-  {
-    category: "LinkedIn",
-    items: [
-      {
-        title: "Company Page setup kit",
-        description:
-          "Ready-to-paste LinkedIn Company Page copy for Golden Tide — name, About, specialties, first post, and create-page steps.",
-        file: "/downloads/linkedin-company-page-kit.md",
-        filename: "Golden-Tide-LinkedIn-Company-Page-Kit.md",
-        meta: "Markdown",
-        action: "Download kit",
-      },
-      {
-        title: "LinkedIn logo (square)",
-        description:
-          "Golden Tide seal mark PNG for the Company Page logo upload (square).",
-        file: "/downloads/linkedin-logo-square.png",
-        filename: "Golden-Tide-LinkedIn-Logo.png",
-        meta: "PNG · Logo",
-        action: "Download logo",
-      },
-      {
-        title: "LinkedIn cover banner",
-        description:
-          "Cover image sized for LinkedIn Company Page (1128×191).",
-        file: "/downloads/linkedin-cover-banner.png",
-        filename: "Golden-Tide-LinkedIn-Cover.png",
-        meta: "PNG · Cover",
-        action: "Download cover",
-      },
-    ],
-  },
 ];
 
 export default function Downloads() {
