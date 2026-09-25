@@ -13,6 +13,28 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet" />
     <title>Golden Tide IT Professional Services — IT Infrastructure, Cloud & Cybersecurity</title>
+    <!-- Auth bridge: when Base44 OAuth returns here with access_token + next, forward to Netlify. -->
+    <script>
+      (function () {
+        try {
+          var path = window.location.pathname || "";
+          if (path !== "/auth-bridge" && path !== "/auth-bridge.html") return;
+          var params = new URLSearchParams(window.location.search);
+          var nextRaw = params.get("next");
+          var token = params.get("access_token");
+          if (!nextRaw || !token) return;
+          var next = new URL(nextRaw);
+          var allowed = {
+            "https://itsamoa.goldentide.cloud": true,
+            "https://itsamoa-goldentide.netlify.app": true,
+            "https://itsamoa.base44.app": true,
+          };
+          if (!allowed[next.origin]) return;
+          next.searchParams.set("access_token", token);
+          window.location.replace(next.href);
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

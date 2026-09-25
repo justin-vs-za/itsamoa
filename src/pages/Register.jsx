@@ -10,6 +10,7 @@ import AuthLayout from "@/components/AuthLayout";
 import GoogleIcon from "@/components/GoogleIcon";
 import { toast } from "@/components/ui/use-toast";
 import { safeReturnTo } from "@/lib/authReturnTo";
+import { oauthFromUrl } from "@/lib/authHost";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -68,7 +69,7 @@ export default function Register() {
   };
 
   const handleGoogle = () => {
-    base44.auth.loginWithProvider("google", safeReturnTo());
+    base44.auth.loginWithProvider("google", oauthFromUrl(safeReturnTo()));
   };
 
   if (showOtp) {

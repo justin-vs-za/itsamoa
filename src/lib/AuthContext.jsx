@@ -105,19 +105,25 @@ export const AuthProvider = ({ children }) => {
   const logout = (shouldRedirect = true) => {
     setUser(null);
     setIsAuthenticated(false);
-    
+
+    // Clear local session without Base44's logout redirect. That redirect
+    // validates from_url against Base44-connected domains and rejects the
+    // Netlify host (itsamoa.goldentide.cloud) with "Domain is not valid".
+    try {
+      window.localStorage.removeItem("base44_access_token");
+      window.localStorage.removeItem("token");
+    } catch {
+      /* ignore */
+    }
     if (shouldRedirect) {
-      // Use the SDK's logout method which handles token cleanup and redirect
-      base44.auth.logout(window.location.href);
-    } else {
-      // Just remove the token without redirect
-      base44.auth.logout();
+      window.location.href = "/";
     }
   };
 
   const navigateToLogin = () => {
-    // Use the SDK's redirectToLogin method
-    base44.auth.redirectToLogin(window.location.href);
+    const returnTo = window.location.pathname + window.location.search;
+    window.location.href =
+      "/login" + (returnTo && returnTo !== "/" ? `?returnTo=${encodeURIComponent(returnTo)}` : "");
   };
 
   return (

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Signing in…</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: system-ui, sans-serif;
+        background: #f8fafc;
+        color: #334155;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="msg">Signing you in…</p>
+    <script>
+      (function () {
+        var ALLOWED = {
+          "https://itsamoa.goldentide.cloud": true,
+          "https://itsamoa-goldentide.netlify.app": true,
+          "https://itsamoa.base44.app": true,
+        };
+        var params = new URLSearchParams(window.location.search);
+        var nextRaw = params.get("next");
+        var token = params.get("access_token");
+        var msg = document.getElementById("msg");
+        if (!nextRaw) {
+          msg.textContent = "Sign-in finished, but the return link was missing.";
+          return;
+        }
+        var next;
+        try {
+          next = new URL(nextRaw);
+        } catch (e) {
+          msg.textContent = "Sign-in finished, but the return link was invalid.";
+          return;
+        }
+        if (!ALLOWED[next.origin]) {
+          msg.textContent = "Sign-in finished, but the return link was not allowed.";
+          return;
+        }
+        if (token) {
+          try {
+            localStorage.setItem("base44_access_token", token);
+            localStorage.setItem("token", token);
+          } catch (e) {}
+          next.searchParams.set("access_token", token);
+        }
+        window.location.replace(next.href);
+      })();
+    </script>
+  </body>
+</html>

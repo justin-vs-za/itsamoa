@@ -8,6 +8,8 @@ import { LogIn, Mail, Lock, Loader2 } from "lucide-react";
 import AuthLayout from "@/components/AuthLayout";
 import GoogleIcon from "@/components/GoogleIcon";
 import { safeReturnTo } from "@/lib/authReturnTo";
+import { oauthFromUrl } from "@/lib/authHost";
+import { loginWithEmailPassword } from "@/lib/emailPasswordLogin";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -23,7 +25,9 @@ export default function Login() {
     setError("");
     setLoading(true);
     try {
-      await base44.auth.loginViaEmailPassword(email, password);
+      // Avoid SDK loginViaEmailPassword: on 401 it calls logout() which
+      // navigates to Base44 and can show "Domain is not valid" on Netlify hosts.
+      await loginWithEmailPassword(email, password);
       window.location.href = returnTo;
     } catch (err) {
       setError(err.message || "Invalid email or password");
@@ -33,7 +37,8 @@ export default function Login() {
   };
 
   const handleGoogle = () => {
-    base44.auth.loginWithProvider("google", returnTo);
+    // OAuth from_url must be on the Base44 allowlisted host (itsamoa.base44.app).
+    base44.auth.loginWithProvider("google", oauthFromUrl(returnTo));
   };
 
   return (
