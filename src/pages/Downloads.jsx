@@ -113,6 +113,29 @@ const DOWNLOADS = [
       },
     ],
   },
+  {
+    category: "Email",
+    items: [
+      {
+        title: "Outlook Email Signature",
+        description:
+          "HTML signature for Outlook — Justin Van Staden · Golden Tide · justin@goldentide.cloud. Open in a browser, copy, and paste into Outlook Signatures.",
+        file: "/downloads/email-signature-outlook.html",
+        filename: "Golden-Tide-Outlook-Signature.html",
+        meta: "HTML · Outlook",
+        action: "Download HTML",
+      },
+      {
+        title: "Signature install notes",
+        description:
+          "Short steps for classic Outlook and Outlook on the web.",
+        file: "/downloads/EMAIL-SIGNATURE-README.md",
+        filename: "Golden-Tide-Signature-Install-Notes.md",
+        meta: "Markdown",
+        action: "Download notes",
+      },
+    ],
+  },
 ];
 
 export default function Downloads() {

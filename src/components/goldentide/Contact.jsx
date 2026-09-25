@@ -86,7 +86,7 @@ export default function Contact() {
                 <Mail className="h-5 w-5 text-gold mt-0.5 shrink-0" />
                 <div>
                   <div className="font-medium text-basalt">
-                    <a href="mailto:justinvs@live.co.za" className="hover:text-gold transition-colors">justinvs@live.co.za</a>
+                    <a href="mailto:justin@goldentide.cloud" className="hover:text-gold transition-colors">justin@goldentide.cloud</a>
                   </div>
                   <div className="text-sm text-muted-foreground">Response within 1 business day</div>
                 </div>
@@ -204,7 +204,7 @@ export default function Contact() {
 
                 {status === "error" && (
                   <p className="text-sm text-destructive">
-                    Something went wrong sending your request. Please try again or email hello@goldentide.cloud directly.
+                    Something went wrong sending your request. Please try again or email justin@goldentide.cloud directly.
                   </p>
                 )}
 
