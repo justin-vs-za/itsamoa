@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { base44 } from "@/api/base44Client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -8,8 +7,8 @@ import { LogIn, Mail, Lock, Loader2 } from "lucide-react";
 import AuthLayout from "@/components/AuthLayout";
 import GoogleIcon from "@/components/GoogleIcon";
 import { safeReturnTo } from "@/lib/authReturnTo";
-import { oauthFromUrl } from "@/lib/authHost";
 import { loginWithEmailPassword } from "@/lib/emailPasswordLogin";
+import { startSocialLogin } from "@/lib/startSocialLogin";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -37,8 +36,7 @@ export default function Login() {
   };
 
   const handleGoogle = () => {
-    // OAuth from_url must be on the Base44 allowlisted host (itsamoa.base44.app).
-    base44.auth.loginWithProvider("google", oauthFromUrl(returnTo));
+    startSocialLogin("google", returnTo);
   };
 
   return (
