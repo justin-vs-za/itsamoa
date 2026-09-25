@@ -1,8 +1,12 @@
-import { Download, FileText, ArrowUpRight } from "lucide-react";
+import { useState } from "react";
+import { Download, FileText, ArrowUpRight, Lock } from "lucide-react";
 import Navbar from "@/components/goldentide/Navbar";
 import Footer from "@/components/goldentide/Footer";
 
-const DOWNLOAD_GROUPS = [
+const ACCESS_CODE = "5456";
+const UNLOCK_KEY = "gt_client_downloads_unlocked";
+
+const PUBLIC_GROUPS = [
   {
     category: "Flyers",
     items: [
@@ -71,6 +75,9 @@ const DOWNLOAD_GROUPS = [
       },
     ],
   },
+];
+
+const CLIENT_GROUPS = [
   {
     category: "Invoices",
     items: [
@@ -166,7 +173,66 @@ function DownloadRow({ item }) {
   );
 }
 
+function CategoryList({ groups }) {
+  return (
+    <div className="space-y-14">
+      {groups.map((group) => (
+        <div key={group.category}>
+          <h2 className="font-mono text-[11px] uppercase tracking-[0.3em] text-gold mb-6">
+            {group.category}
+          </h2>
+          <ul className="divide-y divide-basalt/10 border-y border-basalt/10">
+            {group.items.map((item) => (
+              <DownloadRow key={item.file} item={item} />
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function readUnlocked() {
+  try {
+    return sessionStorage.getItem(UNLOCK_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
 export default function Downloads() {
+  const [unlocked, setUnlocked] = useState(readUnlocked);
+  const [pin, setPin] = useState("");
+  const [pinError, setPinError] = useState("");
+
+  const handleUnlock = (e) => {
+    e.preventDefault();
+    setPinError("");
+    if (pin.trim() === ACCESS_CODE) {
+      try {
+        sessionStorage.setItem(UNLOCK_KEY, "1");
+      } catch {
+        /* ignore */
+      }
+      setUnlocked(true);
+      setPin("");
+      return;
+    }
+    setPinError("Incorrect code. Try again.");
+    setPin("");
+  };
+
+  const handleLock = () => {
+    try {
+      sessionStorage.removeItem(UNLOCK_KEY);
+    } catch {
+      /* ignore */
+    }
+    setUnlocked(false);
+    setPin("");
+    setPinError("");
+  };
+
   return (
     <div className="min-h-screen bg-clarity">
       <Navbar />
@@ -192,23 +258,73 @@ export default function Downloads() {
               Downloads
             </h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl">
-              Flyers, business cards, email signature, and invoice &amp; quote templates — free to
-              download.
+              Flyers, business cards, and email signature are free to download. Invoice and quote
+              templates open with a 4-digit access code.
             </p>
 
-            <div className="mt-16 space-y-14">
-              {DOWNLOAD_GROUPS.map((group) => (
-                <div key={group.category}>
-                  <h2 className="font-mono text-[11px] uppercase tracking-[0.3em] text-gold mb-6">
-                    {group.category}
-                  </h2>
-                  <ul className="divide-y divide-basalt/10 border-y border-basalt/10">
-                    {group.items.map((item) => (
-                      <DownloadRow key={item.file} item={item} />
-                    ))}
-                  </ul>
-                </div>
-              ))}
+            <div className="mt-16">
+              <CategoryList groups={PUBLIC_GROUPS} />
+            </div>
+
+            <div className="mt-20">
+              <div className="flex flex-wrap items-center gap-3 mb-6">
+                <Lock className="h-4 w-4 text-gold" />
+                <h2 className="font-mono text-[11px] uppercase tracking-[0.3em] text-gold">
+                  Client tools — access code
+                </h2>
+                {unlocked && (
+                  <button
+                    type="button"
+                    onClick={handleLock}
+                    className="ml-auto text-xs text-muted-foreground hover:text-basalt transition-colors"
+                  >
+                    Lock again
+                  </button>
+                )}
+              </div>
+
+              {unlocked ? (
+                <CategoryList groups={CLIENT_GROUPS} />
+              ) : (
+                <form
+                  onSubmit={handleUnlock}
+                  className="border border-basalt/10 bg-white/60 px-6 py-10 max-w-md"
+                >
+                  <p className="font-display text-2xl text-basalt tracking-tight">
+                    Enter access code
+                  </p>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                    4-digit code required for invoice and quote templates.
+                  </p>
+                  <label htmlFor="access-code" className="sr-only">
+                    Access code
+                  </label>
+                  <input
+                    id="access-code"
+                    type="password"
+                    inputMode="numeric"
+                    autoComplete="off"
+                    maxLength={4}
+                    pattern="[0-9]{4}"
+                    placeholder="••••"
+                    value={pin}
+                    onChange={(e) => setPin(e.target.value.replace(/\D/g, "").slice(0, 4))}
+                    className="mt-6 w-full h-12 px-4 border border-basalt/20 bg-white text-center text-2xl tracking-[0.4em] font-mono text-basalt focus:outline-none focus:border-gold"
+                    required
+                  />
+                  {pinError && (
+                    <p className="mt-3 text-sm text-red-700" role="alert">
+                      {pinError}
+                    </p>
+                  )}
+                  <button
+                    type="submit"
+                    className="mt-6 w-full inline-flex items-center justify-center gap-2 text-sm font-medium px-5 py-2.5 bg-basalt text-clarity rounded-sm hover:bg-gold hover:text-basalt transition-colors"
+                  >
+                    Unlock
+                  </button>
+                </form>
+              )}
             </div>
 
             <div className="mt-16 flex flex-col sm:flex-row sm:items-center gap-4 border border-basalt/10 bg-white/50 px-6 py-5">
