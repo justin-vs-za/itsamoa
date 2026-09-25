@@ -81,6 +81,38 @@ const DOWNLOADS = [
       },
     ],
   },
+  {
+    category: "Quotes",
+    items: [
+      {
+        title: "Quote Template — Excel",
+        description:
+          "Editable client quotation with line-item formulas, 30-day validity, acceptance block, and BSP Samoa bank reference.",
+        file: "/downloads/quote-template.xlsx",
+        filename: "Golden-Tide-Quote-Template.xlsx",
+        meta: "A4 · XLSX",
+        action: "Download Excel",
+      },
+      {
+        title: "Quote Template — Word",
+        description:
+          "Editable Word quote for proposals — fill prepared-for and scope lines, client signs to accept.",
+        file: "/downloads/quote-template.docx",
+        filename: "Golden-Tide-Quote-Template.docx",
+        meta: "A4 · DOCX",
+        action: "Download Word",
+      },
+      {
+        title: "Quote Template — PDF",
+        description:
+          "Print-ready quote sample with Golden Tide branding, validity window, and acceptance signature lines.",
+        file: "/downloads/quote-template.pdf",
+        filename: "Golden-Tide-Quote-Template.pdf",
+        meta: "A4 · PDF",
+        action: "Download PDF",
+      },
+    ],
+  },
 ];
 
 export default function Downloads() {
