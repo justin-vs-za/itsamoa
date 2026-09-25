@@ -1,0 +1,27 @@
+{
+  "name": "Golden Tide IT Professional Services",
+  "short_name": "Golden Tide",
+  "description": "IT infrastructure, cloud architecture, and cybersecurity for Samoa, New Zealand & Australia.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#142028",
+  "theme_color": "#142028",
+  "icons": [
+    {
+      "src": "/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/golden-tide-logo.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

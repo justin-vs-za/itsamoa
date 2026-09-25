@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import BrandLogo from "@/components/goldentide/BrandLogo";
 
 const COLS = [
   {
@@ -38,11 +39,7 @@ export default function Footer() {
           {/* Seal */}
           <div className="md:col-span-4">
             <div className="flex items-center gap-3">
-              <span className="relative flex h-12 w-12 items-center justify-center">
-                <span className="absolute inset-0 rounded-full border border-gold/40" />
-                <span className="absolute inset-1.5 rounded-full border border-gold/60" />
-                <span className="h-2 w-2 rounded-full bg-gold" />
-              </span>
+              <BrandLogo size={52} className="ring-1 ring-gold/30" />
               <div>
                 <div className="font-display text-2xl text-clarity">Golden Tide</div>
                 <div className="text-[11px] uppercase tracking-[0.3em] text-gold/70 font-mono">

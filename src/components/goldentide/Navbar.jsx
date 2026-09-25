@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import BrandLogo from "@/components/goldentide/BrandLogo";
 
 const NAV_LINKS = [
   { label: "Infrastructure", href: "/#services", group: "Core Infrastructure" },
@@ -40,11 +41,7 @@ export default function Navbar() {
       >
         <nav className="mx-auto max-w-7xl px-6 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 group">
-            <span className="relative flex h-9 w-9 items-center justify-center">
-              <span className="absolute inset-0 rounded-full border border-gold/40" />
-              <span className="absolute inset-1 rounded-full border border-gold/60 pulse-line" />
-              <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-            </span>
+            <BrandLogo size={40} className="ring-1 ring-gold/25" />
             <span className="font-display text-lg tracking-tight text-foreground">
               Golden Tide
               <span className="block text-[10px] uppercase tracking-[0.3em] text-muted-foreground font-body">

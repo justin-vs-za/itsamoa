@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Golden Tide">
+  <defs>
+    <linearGradient id="gold" x1="0.12" y1="0.08" x2="0.92" y2="0.96">
+      <stop offset="0%" stop-color="#F3DEA0"/>
+      <stop offset="40%" stop-color="#E8C45A"/>
+      <stop offset="100%" stop-color="#A67C0A"/>
+    </linearGradient>
+    <linearGradient id="goldMid" x1="0.2" y1="0" x2="0.9" y2="1">
+      <stop offset="0%" stop-color="#E8C45A"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+    <linearGradient id="goldDeep" x1="0.25" y1="0.1" x2="1" y2="0.9">
+      <stop offset="0%" stop-color="#D4A84A"/>
+      <stop offset="100%" stop-color="#8F6A08"/>
+    </linearGradient>
+    <linearGradient id="horizon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#E8C45A" stop-opacity="0.15"/>
+      <stop offset="35%" stop-color="#E8C45A" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#B8860B" stop-opacity="0.35"/>
+    </linearGradient>
+    <radialGradient id="core" cx="42%" cy="38%" r="62%">
+      <stop offset="0%" stop-color="#FFF1C2"/>
+      <stop offset="45%" stop-color="#E8C45A"/>
+      <stop offset="100%" stop-color="#8A6608"/>
+    </radialGradient>
+    <clipPath id="globe">
+      <circle cx="256" cy="256" r="172"/>
+    </clipPath>
+  </defs>
+
+  <rect width="512" height="512" rx="96" fill="#142028"/>
+
+  <!-- Soft globe fill -->
+  <circle cx="256" cy="256" r="172" fill="#1A2A34"/>
+  <circle cx="256" cy="256" r="172" fill="none" stroke="url(#gold)" stroke-width="9"/>
+
+  <!-- Horizon tide across the globe -->
+  <g clip-path="url(#globe)">
+    <path
+      d="M84 274 C150 236 214 308 286 270 C338 242 378 286 428 262"
+      fill="none"
+      stroke="url(#horizon)"
+      stroke-width="6"
+      stroke-linecap="round"
+    />
+  </g>
+
+  <!--
+    Last three slices of a circle — filled annular sectors on the eastern face.
+    Each path is an outer arc → radial tip → inner arc reverse → close.
+  -->
+  <g>
+    <!-- Outer slice -->
+    <path
+      fill="url(#gold)"
+      d="M318 104
+         A172 172 0 0 1 428 256
+         A172 172 0 0 1 318 408
+         L304 388
+         A148 148 0 0 0 404 256
+         A148 148 0 0 0 304 124
+         Z"
+      opacity="0.95"
+    />
+    <!-- Mid slice -->
+    <path
+      fill="url(#goldMid)"
+      d="M300 146
+         A132 132 0 0 1 388 256
+         A132 132 0 0 1 300 366
+         L286 348
+         A108 108 0 0 0 364 256
+         A108 108 0 0 0 286 164
+         Z"
+      opacity="0.9"
+    />
+    <!-- Inner slice -->
+    <path
+      fill="url(#goldDeep)"
+      d="M284 188
+         A92 92 0 0 1 348 256
+         A92 92 0 0 1 284 324
+         L272 310
+         A70 70 0 0 0 326 256
+         A70 70 0 0 0 272 202
+         Z"
+      opacity="0.88"
+    />
+  </g>
+
+  <!-- Core beacon -->
+  <circle cx="256" cy="256" r="24" fill="url(#core)"/>
+  <circle cx="256" cy="256" r="24" fill="none" stroke="#F3DEA0" stroke-width="2" opacity="0.45"/>
+</svg>
