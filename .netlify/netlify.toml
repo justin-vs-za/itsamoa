@@ -1,16 +1,15 @@
+functionsDirectory = "/home/ubuntu/itsamoa-src/netlify/functions"
+functionsDirectoryOrigin = "config"
 headersOrigin = "config"
 redirectsOrigin = "config"
 plugins = []
-
-[functions]
-
-[functions."*"]
 
 [build]
 publish = "/home/ubuntu/itsamoa-src/dist"
 publishOrigin = "config"
 commandOrigin = "config"
 command = "npm ci && npm run build"
+functions = "/home/ubuntu/itsamoa-src/netlify/functions"
 
 [build.environment]
 NODE_VERSION = "22"
@@ -29,6 +28,14 @@ VITE_BASE44_APP_BASE_URL = "https://itsamoa.base44.app"
 
 [build.services]
 
+[functions]
+
+[functions.secure-download]
+included_files = ["secure-downloads/**"]
+
+[functions."*"]
+node_bundler = "esbuild"
+
 [[headers]]
 for = "/*"
 
@@ -36,6 +43,18 @@ for = "/*"
 X-Frame-Options = "DENY"
 X-Content-Type-Options = "nosniff"
 Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[redirects]]
+from = "/secure-download"
+to = "/.netlify/functions/secure-download"
+status = 200.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
 
 [[redirects]]
 from = "/api/*"

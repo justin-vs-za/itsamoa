@@ -7,27 +7,12 @@
   VITE_BASE44_APP_ID = "6aa613ccd990b946b850fb36"
   VITE_BASE44_APP_BASE_URL = "https://itsamoa.base44.app"
 
-[functions]
-  directory = "netlify/functions"
-  node_bundler = "esbuild"
-
-# Bundle private invoice/quote files with the secure-download function
-[functions."secure-download"]
-  included_files = ["secure-downloads/**"]
-
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-
-# Authenticated invoice/quote downloads (must be before SPA catch-all)
-[[redirects]]
-  from = "/secure-download"
-  to = "/.netlify/functions/secure-download"
-  status = 200
-  force = true
 
 # Proxy Base44 backend so Lead.create / auth work when hosted on Netlify
 [[redirects]]
