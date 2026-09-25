@@ -142,8 +142,8 @@ export default function Downloads() {
               Downloads
             </h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl">
-              Print-ready flyers, business cards, and client invoice templates for Golden Tide IT
-              Professional Services — built for small and medium businesses across Samoa, New Zealand,
+              Print-ready flyers, business cards, and client invoice &amp; quote templates for Golden Tide
+              IT Professional Services — built for small and medium businesses across Samoa, New Zealand,
               and Australia.
             </p>
 
