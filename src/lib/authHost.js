@@ -27,13 +27,13 @@ export function absoluteReturnUrl(returnPath = "/") {
  * itsamoa.base44.app URL so Base44 accepts the domain, then forwards the
  * access_token back to the Netlify destination.
  *
- * Prefer the authBridge backend function (302 redirect). Fall back to the
- * static /auth-bridge.html page (also published with the Base44 site).
+ * Uses static /auth-bridge.html (plus the index.html early-redirect script)
+ * so a missing backend function never surfaces a raw JSON error page.
+ * The authBridge function remains available as a faster 302 once published.
  */
 export function oauthFromUrl(returnPath = "/") {
   const next = absoluteReturnUrl(returnPath);
-  const appId = import.meta.env.VITE_BASE44_APP_ID || "6aa613ccd990b946b850fb36";
-  const bridge = new URL(`/api/apps/${appId}/functions/authBridge`, base44AppBaseUrl());
+  const bridge = new URL("/auth-bridge.html", base44AppBaseUrl());
   bridge.searchParams.set("next", next);
   return bridge.href;
 }
