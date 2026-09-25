@@ -13,6 +13,7 @@ const DOWNLOADS = [
         file: "/downloads/flyer-it-services.pdf",
         filename: "Golden-Tide-IT-Services-Flyer.pdf",
         meta: "A4 · PDF",
+        action: "Download PDF",
       },
       {
         title: "Security Audit Flyer",
@@ -21,6 +22,7 @@ const DOWNLOADS = [
         file: "/downloads/flyer-security-audit.pdf",
         filename: "Golden-Tide-Security-Audit-Flyer.pdf",
         meta: "A4 · PDF",
+        action: "Download PDF",
       },
     ],
   },
@@ -34,6 +36,7 @@ const DOWNLOADS = [
         file: "/downloads/business-card-front.pdf",
         filename: "Golden-Tide-Business-Card-Front.pdf",
         meta: "90 × 50 mm · PDF",
+        action: "Download PDF",
       },
       {
         title: "Business Card — Back",
@@ -42,6 +45,39 @@ const DOWNLOADS = [
         file: "/downloads/business-card-back.pdf",
         filename: "Golden-Tide-Business-Card-Back.pdf",
         meta: "90 × 50 mm · PDF",
+        action: "Download PDF",
+      },
+    ],
+  },
+  {
+    category: "Invoices",
+    items: [
+      {
+        title: "Invoice Template — Excel",
+        description:
+          "Editable client invoice with line-item formulas, tax field, and BSP Samoa payment details (Apia · 2001176615).",
+        file: "/downloads/invoice-template.xlsx",
+        filename: "Golden-Tide-Invoice-Template.xlsx",
+        meta: "A4 · XLSX",
+        action: "Download Excel",
+      },
+      {
+        title: "Invoice Template — Word",
+        description:
+          "Editable Word invoice for clients — replace bill-to and line items, keep banking block as-is.",
+        file: "/downloads/invoice-template.docx",
+        filename: "Golden-Tide-Invoice-Template.docx",
+        meta: "A4 · DOCX",
+        action: "Download Word",
+      },
+      {
+        title: "Invoice Template — PDF",
+        description:
+          "Print-ready invoice sample with Golden Tide branding and BSP Samoa bank details for client billing.",
+        file: "/downloads/invoice-template.pdf",
+        filename: "Golden-Tide-Invoice-Template.pdf",
+        meta: "A4 · PDF",
+        action: "Download PDF",
       },
     ],
   },
@@ -74,8 +110,9 @@ export default function Downloads() {
               Downloads
             </h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl">
-              Print-ready flyers and business cards for Golden Tide IT Professional Services —
-              built for small and medium businesses across Samoa, New Zealand, and Australia.
+              Print-ready flyers, business cards, and client invoice templates for Golden Tide IT
+              Professional Services — built for small and medium businesses across Samoa, New Zealand,
+              and Australia.
             </p>
 
             <div className="mt-16 space-y-14">
@@ -112,7 +149,7 @@ export default function Downloads() {
                           className="inline-flex items-center gap-2 self-start md:self-center shrink-0 text-sm font-medium px-5 py-2.5 bg-basalt text-clarity rounded-sm hover:bg-gold hover:text-basalt transition-colors"
                         >
                           <Download className="h-4 w-4" />
-                          Download PDF
+                          {item.action || "Download"}
                         </a>
                       </li>
                     ))}
