@@ -335,10 +335,9 @@ export default function Downloads() {
                       Invoices &amp; quotes are behind a login
                     </p>
                     <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-xl">
-                      Sign in with your Golden Tide account to download invoice and quote templates
-                      (they include banking details). Logins are managed in{" "}
-                      <strong className="text-basalt font-medium">Base44</strong> — Justin invites
-                      or approves users; authentication is email/password or Google.
+                      Sign in with your Golden Tide email and password to download invoice and quote
+                      templates (they include banking details). Access is for the Golden Tide team
+                      only — Justin manages accounts in Base44.
                     </p>
                   </div>
                   <div className="flex flex-col gap-3 shrink-0">
@@ -347,13 +346,7 @@ export default function Downloads() {
                       className="inline-flex items-center justify-center gap-2 text-sm font-medium px-5 py-2.5 bg-basalt text-clarity rounded-sm hover:bg-gold hover:text-basalt transition-colors"
                     >
                       <LogIn className="h-4 w-4" />
-                      Log in
-                    </Link>
-                    <Link
-                      to={`/register?returnTo=${encodeURIComponent("/downloads")}`}
-                      className="inline-flex items-center justify-center gap-2 text-sm text-muted-foreground hover:text-basalt transition-colors"
-                    >
-                      Request access / register
+                      Log in with email
                     </Link>
                   </div>
                 </div>
