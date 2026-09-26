@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Linkedin } from "lucide-react";
 import BrandLogo from "@/components/goldentide/BrandLogo";
+
+const LINKEDIN_URL = "https://www.linkedin.com/in/justin-van-staden-70312723/";
 
 const NAV_LINKS = [
   { label: "Infrastructure", href: "/#services", group: "Core Infrastructure" },
@@ -81,6 +83,16 @@ export default function Navbar() {
               )
             )}
             <a
+              href={LINKEDIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Justin Van Staden on LinkedIn"
+              className="text-muted-foreground hover:text-gold transition-colors"
+              title="LinkedIn"
+            >
+              <Linkedin className="h-5 w-5" />
+            </a>
+            <a
               href="/#contact"
               className="text-sm font-medium px-5 py-2.5 bg-basalt text-clarity rounded-sm hover:bg-gold hover:text-basalt transition-colors"
             >
@@ -88,13 +100,24 @@ export default function Navbar() {
             </a>
           </div>
 
-          <button
-            onClick={() => setOpen(true)}
-            className="md:hidden text-foreground"
-            aria-label="Open menu"
-          >
-            <Menu className="h-6 w-6" />
-          </button>
+          <div className="md:hidden flex items-center gap-3">
+            <a
+              href={LINKEDIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Justin Van Staden on LinkedIn"
+              className="text-foreground"
+            >
+              <Linkedin className="h-5 w-5" />
+            </a>
+            <button
+              onClick={() => setOpen(true)}
+              className="text-foreground"
+              aria-label="Open menu"
+            >
+              <Menu className="h-6 w-6" />
+            </button>
+          </div>
         </nav>
       </header>
 
@@ -153,7 +176,15 @@ export default function Navbar() {
 
           <div className="px-6 md:px-12 py-6 border-t border-gold/15 flex flex-col md:flex-row md:items-center justify-between gap-3">
             <span className="font-mono text-xs text-clarity/50">goldentide.cloud · Samoa · NZ · Australia</span>
-            <span className="font-mono text-xs text-clarity/50">28 years · South Africa → Pacific</span>
+            <a
+              href={LINKEDIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-mono text-xs text-clarity/70 hover:text-gold transition-colors"
+            >
+              <Linkedin className="h-3.5 w-3.5" />
+              linkedin.com/in/justin-van-staden-70312723
+            </a>
           </div>
         </div>
       </div>
