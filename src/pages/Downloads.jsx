@@ -75,6 +75,29 @@ const PUBLIC_GROUPS = [
       },
     ],
   },
+  {
+    category: "Rates & Terms",
+    items: [
+      {
+        title: "Rate Card",
+        description:
+          "Work charges chart — emergency call-out $350, consulting $150/hr, specialised project $200/hr, system audit $300 flat, IT training $80/hr (min. 2 days).",
+        file: "/downloads/rate-card.pdf",
+        filename: "Golden-Tide-Rate-Card.pdf",
+        meta: "A4 · PDF",
+        action: "Download PDF",
+      },
+      {
+        title: "Terms & Conditions",
+        description:
+          "Billing terms — first hour always billable, negotiable rates by system size/complexity, payment and engagement conditions.",
+        file: "/downloads/terms-and-conditions.pdf",
+        filename: "Golden-Tide-Terms-and-Conditions.pdf",
+        meta: "A4 · PDF",
+        action: "Download PDF",
+      },
+    ],
+  },
 ];
 
 const CLIENT_GROUPS = [
