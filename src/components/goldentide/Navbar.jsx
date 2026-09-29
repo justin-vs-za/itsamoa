@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Linkedin } from "lucide-react";
+import { Menu, X, Linkedin, Facebook } from "lucide-react";
 import BrandLogo from "@/components/goldentide/BrandLogo";
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/justin-van-staden-70312723/";
+const FACEBOOK_URL = "https://www.facebook.com/profile.php?id=61594527431413";
 
 const NAV_LINKS = [
   { label: "Infrastructure", href: "/#services", group: "Core Infrastructure" },
