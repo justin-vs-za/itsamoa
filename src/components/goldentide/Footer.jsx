@@ -96,6 +96,11 @@ export default function Footer() {
                 </a>
               </li>
               <li>
+                <a href="/rates" className="text-sm text-clarity/60 hover:text-gold transition-colors">
+                  Rates &amp; Terms
+                </a>
+              </li>
+              <li>
                 <a
                   href="https://www.linkedin.com/in/justin-van-staden-70312723/"
                   target="_blank"

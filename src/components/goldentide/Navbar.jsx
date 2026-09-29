@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { label: "Cybersecurity", href: "/#security", group: "Security" },
   { label: "Legacy", href: "/#legacy", group: "Core Infrastructure" },
   { label: "Downloads", href: "/downloads", group: "Cloud Services", route: true },
+  { label: "Rates", href: "/rates", group: "Cloud Services", route: true },
   { label: "Contact", href: "/#contact", group: "Cloud Services" },
 ];
 

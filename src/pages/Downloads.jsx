@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Download, FileText, ArrowUpRight, Lock } from "lucide-react";
 import Navbar from "@/components/goldentide/Navbar";
 import Footer from "@/components/goldentide/Footer";
@@ -282,7 +283,11 @@ export default function Downloads() {
             </h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl">
               Flyers, business cards, and email signature are free to download. Invoice and quote
-              templates open with a 4-digit access code.
+              templates open with a 4-digit access code. Prefer to read rates online?{" "}
+              <Link to="/rates" className="text-gold hover:underline underline-offset-4">
+                View rates &amp; terms
+              </Link>
+              .
             </p>
 
             <div className="mt-16">
