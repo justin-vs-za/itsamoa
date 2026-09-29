@@ -81,7 +81,7 @@ const PUBLIC_GROUPS = [
       {
         title: "Rate Card",
         description:
-          "Work charges chart — emergency call-out $350, consulting $150/hr, specialised project $200/hr, system audit $500 flat, IT training $80/hr (min. 2 days).",
+          "Work charges chart — emergency call-out $350, everyday IT support $100/hr, consulting $150/hr, specialised project $200/hr, system audit $500 flat, IT training $80/hr (min. 2 days).",
         file: "/downloads/rate-card.pdf",
         filename: "Golden-Tide-Rate-Card.pdf",
         meta: "A4 · PDF",
