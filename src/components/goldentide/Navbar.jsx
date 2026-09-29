@@ -84,16 +84,28 @@ export default function Navbar() {
                 </a>
               )
             )}
-            <a
-              href={LINKEDIN_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Justin Van Staden on LinkedIn"
-              className="text-muted-foreground hover:text-gold transition-colors"
-              title="LinkedIn"
-            >
-              <Linkedin className="h-5 w-5" />
-            </a>
+            <div className="flex items-center gap-3">
+              <a
+                href={LINKEDIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Justin Van Staden on LinkedIn"
+                className="text-muted-foreground hover:text-gold transition-colors"
+                title="LinkedIn"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a
+                href={FACEBOOK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Golden Tide on Facebook"
+                className="text-muted-foreground hover:text-gold transition-colors"
+                title="Facebook"
+              >
+                <Facebook className="h-5 w-5" />
+              </a>
+            </div>
             <a
               href="/#contact"
               className="text-sm font-medium px-5 py-2.5 bg-basalt text-clarity rounded-sm hover:bg-gold hover:text-basalt transition-colors"
@@ -111,6 +123,15 @@ export default function Navbar() {
               className="text-foreground"
             >
               <Linkedin className="h-5 w-5" />
+            </a>
+            <a
+              href={FACEBOOK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Golden Tide on Facebook"
+              className="text-foreground"
+            >
+              <Facebook className="h-5 w-5" />
             </a>
             <button
               onClick={() => setOpen(true)}
@@ -178,15 +199,26 @@ export default function Navbar() {
 
           <div className="px-6 md:px-12 py-6 border-t border-gold/15 flex flex-col md:flex-row md:items-center justify-between gap-3">
             <span className="font-mono text-xs text-clarity/50">goldentide.cloud · Samoa · NZ · Australia</span>
-            <a
-              href={LINKEDIN_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-mono text-xs text-clarity/70 hover:text-gold transition-colors"
-            >
-              <Linkedin className="h-3.5 w-3.5" />
-              linkedin.com/in/justin-van-staden-70312723
-            </a>
+            <div className="flex flex-wrap items-center gap-4">
+              <a
+                href={LINKEDIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-mono text-xs text-clarity/70 hover:text-gold transition-colors"
+              >
+                <Linkedin className="h-3.5 w-3.5" />
+                LinkedIn
+              </a>
+              <a
+                href={FACEBOOK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-mono text-xs text-clarity/70 hover:text-gold transition-colors"
+              >
+                <Facebook className="h-3.5 w-3.5" />
+                Facebook
+              </a>
+            </div>
           </div>
         </div>
       </div>
