@@ -52,6 +52,7 @@ const TERM_SECTIONS = [
     items: [
       "Standard rates are published on this page and the Golden Tide Rate Card (as updated from time to time).",
       "Current headline rates (WST unless otherwise agreed): Emergency call-out $350 base; Everyday IT support $100/hour; Consulting $150/hour; Specialised project work $200/hour; Complete system audit $500 flat; IT training $80/hour with a minimum of 2 days.",
+      "These prices are far less than typical New Zealand and Australian IT company rates. Golden Tide keeps them accessible to help small and medium businesses across the South Pacific islands.",
       "Depending on the size and complexity of systems, and the length of engagement, rates may be negotiated. Agreed rates will appear on the quote or invoice.",
       "Quotes are valid for the period stated (default 30 days) and may be withdrawn if not accepted in writing.",
     ],
@@ -156,6 +157,11 @@ export default function Rates() {
               call-outs, audits, and training. Currency is <strong className="text-basalt">WST</strong>{" "}
               (Samoan Tala) unless a quote specifies NZD, AUD, or another currency. Final fees depend
               on system size and complexity and may be negotiated on the quote.
+            </p>
+            <p className="mt-4 text-base text-basalt/80 leading-relaxed max-w-2xl border-l-[3px] border-gold pl-4">
+              These prices are far less than typical New Zealand and Australian IT company rates.
+              Golden Tide keeps them accessible to help small and medium businesses across the{" "}
+              <strong className="text-basalt">South Pacific islands</strong>.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
