@@ -38,3 +38,6 @@ base44/.app.jsonc
 
 # Local Netlify folder
 .netlify
+
+# Local agent skill installs (optional)
+.agents/

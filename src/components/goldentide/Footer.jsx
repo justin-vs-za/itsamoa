@@ -101,6 +101,11 @@ export default function Footer() {
                 </a>
               </li>
               <li>
+                <a href="/pay" className="text-sm text-clarity/60 hover:text-gold transition-colors">
+                  Pay / Invoice
+                </a>
+              </li>
+              <li>
                 <a
                   href="https://www.linkedin.com/in/justin-van-staden-70312723/"
                   target="_blank"

@@ -32,3 +32,11 @@ npx skills add base44/skills
 - Prefer the existing Base44 CLI workflow over adding new npm scripts for Base44-specific tasks.
 - Reuse the existing SDK client and Vite plugin patterns before adding new Base44 integration paths.
 - Run the relevant checks from `package.json` before finishing code changes.
+
+## Stripe
+
+- Plan: `docs/stripe-integration-plan.md`
+- Secret key only in Netlify env / `.env.local` — never in Vite client code
+- Functions: `netlify/functions/create-checkout-session.mjs`, `create-invoice.mjs`, `stripe-webhook.mjs`
+- Smoke: `npm run stripe:smoke` (requires `STRIPE_SECRET_KEY`)
+- UI: `/pay` and `/pay/success`

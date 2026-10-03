@@ -13,6 +13,7 @@ const NAV_LINKS = [
   { label: "Legacy", href: "/#legacy", group: "Core Infrastructure" },
   { label: "Downloads", href: "/downloads", group: "Cloud Services", route: true },
   { label: "Rates", href: "/rates", group: "Cloud Services", route: true },
+  { label: "Pay", href: "/pay", group: "Cloud Services", route: true },
   { label: "Contact", href: "/#contact", group: "Cloud Services" },
 ];
 

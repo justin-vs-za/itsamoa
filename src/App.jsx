@@ -9,6 +9,8 @@ import ScrollToTop from './components/ScrollToTop';
 import Home from '@/pages/Home';
 import Downloads from '@/pages/Downloads';
 import Rates from '@/pages/Rates';
+import Pay from '@/pages/Pay';
+import PaySuccess from '@/pages/PaySuccess';
 import Login from '@/pages/Login';
 import Register from '@/pages/Register';
 import ForgotPassword from '@/pages/ForgotPassword';
@@ -38,6 +40,8 @@ const AuthenticatedApp = () => {
       <Route path="/" element={<Home />} />
       <Route path="/downloads" element={<Downloads />} />
       <Route path="/rates" element={<Rates />} />
+      <Route path="/pay" element={<Pay />} />
+      <Route path="/pay/success" element={<PaySuccess />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />

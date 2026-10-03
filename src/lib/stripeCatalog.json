@@ -1,0 +1,49 @@
+{
+  "currency": "usd",
+  "list_currency": "WST",
+  "list_currency_note": "Published rates are in WST. Card payments via Stripe settle in USD at the same numeric amounts shown on the rate card until a dedicated FX mapping is configured. Bank transfer (BSP Samoa) remains available for WST settlement.",
+  "products": [
+    {
+      "sku": "everyday-it",
+      "name": "Everyday IT support",
+      "unit_amount": 10000,
+      "unit": "per_hour",
+      "description": "Day-to-day support — email, printers, accounts, workstations, connectivity."
+    },
+    {
+      "sku": "consulting",
+      "name": "Consulting",
+      "unit_amount": 15000,
+      "unit": "per_hour",
+      "description": "Advice, assessments, planning, meetings, and general technical consulting."
+    },
+    {
+      "sku": "specialised",
+      "name": "Specialised project work",
+      "unit_amount": 20000,
+      "unit": "per_hour",
+      "description": "Migrations, builds, integrations, TIMS, complex infrastructure and security projects."
+    },
+    {
+      "sku": "audit",
+      "name": "Complete system audit",
+      "unit_amount": 50000,
+      "unit": "flat",
+      "description": "Full environment review with findings and a prioritised remediation roadmap."
+    },
+    {
+      "sku": "emergency",
+      "name": "Emergency call-out",
+      "unit_amount": 35000,
+      "unit": "base_fee",
+      "description": "Priority mobilisation for outages and critical after-hours incidents (base fee)."
+    },
+    {
+      "sku": "training",
+      "name": "IT training",
+      "unit_amount": 8000,
+      "unit": "per_hour",
+      "description": "Hands-on staff training (minimum 2 days when booked as training)."
+    }
+  ]
+}

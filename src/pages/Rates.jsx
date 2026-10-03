@@ -85,6 +85,7 @@ const TERM_SECTIONS = [
     items: [
       "Invoices are payable within 14 days of the invoice date unless otherwise agreed in writing.",
       "Payment details (bank, branch, account name, account number) appear on each invoice. Account name for BSP Samoa payments: Justin Van Staden.",
+      "Card and electronic invoices may also be paid via Stripe (USD settlement at the published numeric WST rate-card amounts) at /pay.",
       "Please quote the invoice number as your payment reference.",
       "Overdue amounts may pause further work until the account is brought current.",
       "Prices exclude tax / VAGST unless the invoice shows tax as a separate line.",
@@ -293,6 +294,13 @@ export default function Rates() {
               >
                 Request a quote
               </a>
+              <Link
+                to="/pay"
+                className="inline-flex items-center gap-2 text-sm font-medium px-5 py-2.5 border border-basalt/20 text-basalt rounded-sm hover:border-gold hover:text-gold transition-colors"
+              >
+                Pay online / invoice
+                <ArrowUpRight className="h-4 w-4" />
+              </Link>
               <a
                 href="/downloads/terms-and-conditions.pdf"
                 download="Golden-Tide-Terms-and-Conditions.pdf"
